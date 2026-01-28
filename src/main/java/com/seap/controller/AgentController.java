@@ -14,6 +14,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/*
+* curl --location 'http://localhost:8001/agent/newDocument' \
+--header 'Content-Type: application/json' \
+--data '{
+    "documentName": "ContratoES.pdf"
+}'
+*
+* chamada para reply:
+curl --location 'http://localhost:9090/api/emails/06df8993-fc12-4fa9-896b-1da0c0ff4630/reply' --header 'Content-Type: application/json' --data '{
+    "respostaTexto": "Empresa.Complemento=Empresa; Empresa.Observacoes=Empresa que ira contratar os detentos; OrgaoId; 0987; valorContratoemCentavos= 1200000000; tipoTrabalho=t.rabalho remunerado para resocializacao; caragaHoraria=8h por dia; quantidade de vagas: 14; remuneracao de cada vaga: R$1500"
+}'
+
+*
+* */
+
 @RestController
 @RequestMapping("/agent")
 public class AgentController {
@@ -49,7 +65,9 @@ public class AgentController {
 
         agentProcess.run();
 
-        return ResponseEntity.ok().build();
+
+
+        return ResponseEntity.ok().body(agentProcess.toString());
 
     }
 

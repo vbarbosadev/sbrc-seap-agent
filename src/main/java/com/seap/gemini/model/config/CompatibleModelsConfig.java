@@ -48,7 +48,31 @@ public class CompatibleModelsConfig extends OpenAiCompatibleModelFactory {
 
     @Bean
     public Llm geminiModel03(
-            @Value("gemini-3-flash") String model
+            @Value("gemini-3-flash-preview") String model
+    ){
+        return openAiCompatibleLlm(
+                model,
+                new PerTokenPricingModel(0.40, 1.6),
+                "Google GEMINI",
+                LocalDate.of(2025, 1, 1)
+        );
+    }
+
+    @Bean
+    public Llm geminiModel04(
+            @Value("gemini-2.0-flash") String model
+    ){
+        return openAiCompatibleLlm(
+                model,
+                new PerTokenPricingModel(0.40, 1.6),
+                "Google GEMINI",
+                LocalDate.of(2025, 1, 1)
+        );
+    }
+
+    @Bean
+    public Llm geminiModel05(
+            @Value("gemini-3-pro-preview") String model
     ){
         return openAiCompatibleLlm(
                 model,

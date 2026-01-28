@@ -41,7 +41,7 @@ public abstract class Personas {
             .andBackstory("""
                     "vagas": [
                         {
-                          "funcaoId": 10,
+                          "funcaoId": 10, 
                           "quantidade": 5,
                           "remuneracaoCentavos": 180000,
                           "descricaoFuncoes": "Atividades de limpeza em áreas comuns, apoio em conservação predial."
@@ -92,12 +92,7 @@ public abstract class Personas {
 
                     """);
 
-    public static final Persona REVIEWER = Persona.create(
-            "Contract Review",
-            "An experienced procurement secretary to map contracts",
-            "Always clear in his explanations, but never answers without being sure, and clarifies doubts whenever possible",
-            "Based on the data provided about a specific contract, find what is needed to fill in the available fields."
-    );
+
 
     public static final RoleGoalBackstory SEARCHER = RoleGoalBackstory
             .withRole("Contract Reader")
@@ -146,6 +141,59 @@ public abstract class Personas {
                     }
                     """);
 
+    public static final RoleGoalBackstory REVIEWER = RoleGoalBackstory
+        .withRole("Contract Reviewer")
+            .andGoal("Review contract and use new values to complete the data")
+            .andBackstory("""
+                    Use the information received by a email response and try to complete the missing data by the contract
+                    
+                    The contract need be find by they name (documentName)
+                    
+                    IF is not complete, resend a email asking for the others data
+                    
+                    JSON structure:
+                    {
+                      "empresa": {
+                        "razaoSocial": "Empresa Ramo LTDA",
+                        "nomeFantasia": "Empresa Fantasia",
+                        "cnpj": "73672828000160",
+                        "telefone": "5584999999999",
+                        "email": "contato@empresa.com",
+                        "responsavel": "Fulano de Tal",
+                        "logradouro": "Rua das Flores",
+                        "numero": "123",
+                        "complemento": "Sala 5",
+                        "bairro": "Centro",
+                        "cep": "59000000",
+                        "cidade": "Natal",
+                        "uf": "RN",
+                        "observacoes": "Empresa com contrato ativo no sistema."
+                      },
+                      "orgaoId": 45,
+                      "valorCentavosContrato": 1500000,
+                      "dataInicioVigencia": "2025-09-01",
+                      "dataFimVigencia": "2026-08-31",
+                      "localTrabalho": "Unidade X - RN",
+                      "tipoTrabalho": "CARGA_HORARIA",
+                      "cargaHoraria": "OITO_HORAS",
+                      "objetoContrato": "Prestação de serviços de limpeza e conservação predial.",
+                      "vagas": [
+                        {
+                          "funcaoId": 10,
+                          "quantidade": 5,
+                          "remuneracaoCentavos": 180000,
+                          "descricaoFuncoes": "Atividades de limpeza em áreas comuns, apoio em conservação predial."
+                        },
+                        {
+                          "funcaoId": 20,
+                          "quantidade": 2,
+                          "remuneracaoCentavos": 250000,
+                          "descricaoFuncoes": "Supervisão das equipes de limpeza, elaboração de relatórios de atividades."
+                        }
+                      ]
+                    }                  
+                 
+                    """);
 
 
 }
